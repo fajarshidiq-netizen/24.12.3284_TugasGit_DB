@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biodata Diri - Fajar Shidiq Aziq</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* CSS Variables & Theme Definitions */
+    :root {
+      --bg-gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%);
+      --bg-gradient-light: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #dbeafe 100%);
+      
+      --card-bg-dark: rgba(30, 41, 59, 0.45);
+      --card-bg-light: rgba(255, 255, 255, 0.55);
+      
+      --border-color-dark: rgba(255, 255, 255, 0.08);
+      --border-color-light: rgba(15, 23, 42, 0.08);
+      
+      --text-primary-dark: #f8fafc;
+      --text-primary-light: #0f172a;
+      
+      --text-secondary-dark: #94a3b8;
+      --text-secondary-light: #475569;
+      
+      --accent-color: #6366f1; /* Indigo */
+      --accent-color-hover: #4f46e5;
+      --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+      --glow-color: rgba(99, 102, 241, 0.15);
+      
+      --font-outfit: 'Outfit', sans-serif;
+      --font-jakarta: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    }
+
+    body {
+      font-family: var(--font-jakarta);
+      background: var(--bg-gradient-dark);
+      color: var(--text-primary-dark);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body.light-mode {
+      background: var(--bg-gradient-light);
+      color: var(--text-primary-light);
+    }
+
+    /* Background decorative blobs */
+    .blob {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      filter: blur(100px);
+      z-index: -1;
+      opacity: 0.3;
+      animation: float-blobs 12s infinite alternate ease-in-out;
+    }
+
+    .blob-1 {
+      background: #6366f1;
+      top: -10%;
+      left: -10%;
+    }
+
+    .blob-2 {
+      background: #d946ef;
+      bottom: -10%;
+      right: -10%;
+      animation-delay: -6s;
+    }
+
+    @keyframes float-blobs {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+      100% {
+        transform: translate(50px, 50px) scale(1.1);
+      }
+    }
+
+    /* Container for layout */
+    .container {
+      width: 100%;
+      max-width: 480px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+    }
+
+    /* Controls (Theme Toggle) */
+    .controls {
+      position: absolute;
+      top: -40px;
+      right: 24px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn-toggle {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color-dark);
+      color: var(--text-primary-dark);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    body.light-mode .btn-toggle {
+      background: rgba(15, 23, 42, 0.05);
+      border-color: var(--border-color-light);
+      color: var(--text-primary-light);
+    }
+
+    .btn-toggle:hover {
+      transform: scale(1.1);
+      border-color: var(--accent-color);
+      box-shadow: 0 0 12px rgba(99, 102, 241, 0.3);
+    }
+
+    /* Profile Card Styling */
+    .card {
+      background: var(--card-bg-dark);
+      border: 1px solid var(--border-color-dark);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-radius: 28px;
+      padding: 40px 32px;
+      width: 100%;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+      animation: card-appear 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+
+    body.light-mode .card {
+      background: var(--card-bg-light);
+      border-color: var(--border-color-light);
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.05);
+    }
+
+    @keyframes card-appear {
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Glow Effect */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Avatar */
+    .avatar-wrapper {
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: var(--accent-gradient);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: var(--font-outfit);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: white;
+      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
+      position: relative;
+      z-index: 1;
+    }
+
+    .avatar-ring {
+      position: absolute;
+      top: -6px;
+      left: -6px;
+      right: -6px;
+      bottom: -6px;
+      border-radius: 50%;
+      border: 2px dashed var(--accent-color);
+      opacity: 0.5;
+      animation: spin 20s linear infinite;
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Header text */
+    .profile-name {
+      font-family: var(--font-outfit);
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      text-align: center;
+      letter-spacing: -0.5px;
+    }
+
+    .profile-title {
+      font-size: 0.95rem;
+      color: var(--text-secondary-dark);
+      font-weight: 500;
+      margin-bottom: 24px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    body.light-mode .profile-title {
+      color: var(--text-secondary-light);
+    }
+
+    .profile-title i {
+      color: var(--accent-color);
+    }
+
+    /* Divider */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-color-dark), transparent);
+      margin-bottom: 24px;
+    }
+
+    body.light-mode .divider {
+      background: linear-gradient(90deg, transparent, var(--border-color-light), transparent);
+    }
+
+    /* Info Fields */
+    .info-list {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color-dark);
+      padding: 12px 18px;
+      border-radius: 16px;
+      transition: all 0.2s ease;
+    }
+
+    body.light-mode .info-item {
+      background: rgba(0, 0, 0, 0.01);
+      border-color: var(--border-color-light);
+    }
+
+    .info-item:hover {
+      background: rgba(99, 102, 241, 0.05);
+      border-color: rgba(99, 102, 241, 0.25);
+      transform: translateX(4px);
+    }
+
+    body.light-mode .info-item:hover {
+      background: rgba(99, 102, 241, 0.03);
+    }
+
+    .info-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(99, 102, 241, 0.1);
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--accent-color);
+      margin-right: 14px;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .info-details {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .info-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-secondary-dark);
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    body.light-mode .info-label {
+      color: var(--text-secondary-light);
+    }
+
+    .info-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    /* Clipboard Copy Action button */
+    .btn-copy {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary-dark);
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    body.light-mode .btn-copy {
+      color: var(--text-secondary-light);
+    }
+
+    .btn-copy:hover {
+      color: var(--accent-color);
+      background: rgba(99, 102, 241, 0.1);
+    }
+
+    .btn-copy:active {
+      transform: scale(0.9);
+    }
+
+    /* Tooltip styling */
+    .tooltip {
+      position: relative;
+    }
+
+    .tooltip-text {
+      visibility: hidden;
+      width: 100px;
+      background-color: #334155;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+      position: absolute;
+      z-index: 10;
+      bottom: 125%;
+      left: 50%;
+      margin-left: -50px;
+      opacity: 0;
+      transition: opacity 0.2s;
+      font-size: 0.75rem;
+      font-weight: 500;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .tooltip:hover .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    /* Decorative Tags */
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .tag {
+      background: rgba(99, 102, 241, 0.08);
+      border: 1px solid rgba(99, 102, 241, 0.15);
+      color: var(--accent-color);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    body.light-mode .tag {
+      background: rgba(99, 102, 241, 0.04);
+    }
+
+    /* Footer & Git info */
+    .footer {
+      font-size: 0.8rem;
+      color: var(--text-secondary-dark);
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    body.light-mode .footer {
+      color: var(--text-secondary-light);
+    }
+
+    .footer a {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: border-bottom 0.2s ease;
+      border-bottom: 1px solid transparent;
+    }
+
+    .footer a:hover {
+      border-bottom-color: var(--accent-color);
+    }
+
+    /* Card active mouse tracking */
+    @media (pointer: fine) {
+      .card {
+        transition: transform 0.1s ease, box-shadow 0.2s ease;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Decorative Blobs -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <div class="container">
+    <!-- Controls (Top Right of Card area) -->
+    <div class="controls">
+      <button class="btn-toggle" id="themeToggle" aria-label="Ganti Tema">
+        <i class="fa-solid fa-moon" id="themeIcon"></i>
+      </button>
+    </div>
+
+    <!-- Main Biodata Card -->
+    <div class="card" id="profileCard">
+      <div class="card-content">
+        <!-- Avatar Wrapper -->
+        <div class="avatar-wrapper">
+          <div class="avatar-ring"></div>
+          <div class="avatar">FS</div>
+        </div>
+
+        <!-- Name & Subtitle -->
+        <h1 class="profile-name">Fajar Shidiq Aziq</h1>
+        <p class="profile-title">
+          <i class="fa-solid fa-graduation-cap"></i>
+          Mahasiswa Sistem Informasi
+        </p>
+
+        <!-- Divider Line -->
+        <div class="divider"></div>
+
+        <!-- Biodata Fields -->
+        <div class="info-list">
+          
+          <!-- NAMA -->
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="info-details">
+              <span class="info-label">Nama Lengkap</span>
+              <span class="info-value">Fajar Shidiq Aziq</span>
+            </div>
+          </div>
+
+          <!-- NIM -->
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fa-solid fa-id-card"></i>
+            </div>
+            <div class="info-details">
+              <span class="info-label">Nomor Induk Mahasiswa (NIM)</span>
+              <span class="info-value" id="nimValue">24.12.3284</span>
+            </div>
+            <button class="btn-copy tooltip" id="copyBtn" aria-label="Salin NIM">
+              <i class="fa-regular fa-copy" id="copyIcon"></i>
+              <span class="tooltip-text" id="tooltipText">Salin NIM</span>
+            </button>
+          </div>
+
+          <!-- PRODI -->
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fa-solid fa-book-bookmark"></i>
+            </div>
+            <div class="info-details">
+              <span class="info-label">Program Studi</span>
+              <span class="info-value">Sistem Informasi (SI)</span>
+            </div>
+          </div>
+
+          <!-- INSTANSI -->
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fa-solid fa-building-columns"></i>
+            </div>
+            <div class="info-details">
+              <span class="info-label">Instansi</span>
+              <span class="info-value">Universitas AMIKOM Yogyakarta</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Tags / Badges -->
+        <div class="tags-container">
+          <span class="tag"><i class="fa-solid fa-code"></i> Frontend</span>
+          <span class="tag"><i class="fa-solid fa-database"></i> Database</span>
+          <span class="tag"><i class="fa-brands fa-git-alt"></i> Git Tugas</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Area -->
+    <footer class="footer">
+      <p>&copy; 2026 Fajar Shidiq Aziq. Dibuat untuk Praktikum DB.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Theme toggling functionality
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const body = document.body;
+
+    // Check saved theme or preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'light' || (!savedTheme && !systemPrefersDark)) {
+      body.classList.add('light-mode');
+      themeIcon.className = 'fa-solid fa-sun';
+    } else {
+      body.classList.remove('light-mode');
+      themeIcon.className = 'fa-solid fa-moon';
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+      body.classList.toggle('light-mode');
+      const isLight = body.classList.contains('light-mode');
+      
+      themeIcon.className = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      
+      // Micro animation toggle effect
+      themeToggleBtn.style.transform = 'scale(0.8) rotate(360deg)';
+      setTimeout(() => {
+        themeToggleBtn.style.transform = 'scale(1) rotate(360deg)';
+        themeToggleBtn.style.transform = '';
+      }, 200);
+    });
+
+    // Copy NIM to Clipboard function
+    const copyBtn = document.getElementById('copyBtn');
+    const copyIcon = document.getElementById('copyIcon');
+    const nimValue = document.getElementById('nimValue').innerText;
+    const tooltipText = document.getElementById('tooltipText');
+
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(nimValue).then(() => {
+        // Change icon and tooltip text on success
+        copyIcon.className = 'fa-solid fa-check';
+        copyIcon.style.color = '#10b981'; // Green
+        tooltipText.innerText = 'Tersalin!';
+        
+        // Reset after 2 seconds
+        setTimeout(() => {
+          copyIcon.className = 'fa-regular fa-copy';
+          copyIcon.style.color = '';
+          tooltipText.innerText = 'Salin NIM';
+        }, 2000);
+      }).catch(err => {
+        console.error('Gagal menyalin text: ', err);
+      });
+    });
+
+    // Interactive 3D Card Hover Effect
+    const card = document.getElementById('profileCard');
+    
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left; // x coordinate inside the element
+      const y = e.clientY - rect.top;  // y coordinate inside the element
+      
+      // Update custom properties for spotlight gradient
+      card.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
+      card.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
+      
+      // Calculate rotation angles based on mouse position
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((centerY - y) / centerY) * 6; // Max rotation 6 degrees
+      const rotateY = ((x - centerX) / centerX) * 6;
+      
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      // Reset rotation on mouse leave
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+    });
+  </script>
+</body>
+</html>
